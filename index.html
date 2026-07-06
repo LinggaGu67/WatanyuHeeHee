@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <title>ทวงหมูยออุบล</title>
+  <style>
+    body {
+      margin: 0; height: 100vh; display: flex; flex-direction: column;
+      justify-content: center; align-items: center; background: #ff3b30;
+      font-family: "Noto Sans Thai", sans-serif; color: white; text-align: center;
+    }
+    h1 { font-size: 3rem; margin: 0; animation: shake 0.5s infinite; }
+    p { font-size: 1.5rem; margin: 10px 0; }
+    button {
+      margin-top: 20px; padding: 15px 30px; font-size: 1.2rem;
+      border: none; border-radius: 12px; background: white; color: #ff3b30;
+      font-weight: bold; cursor: pointer;
+    }
+    @keyframes shake {
+      0%,100% { transform: translateX(0); }
+      25% { transform: translateX(-5px); }
+      75% { transform: translateX(5px); }
+    }
+    .popup {
+      position: fixed; top: 20px;
+      background: yellow; color: black;
+      padding: 10px 20px; border-radius: 8px; font-weight: bold;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="popup" id="popup">ส่งหมูยอมาเดี๋ยวนี้!!</div>
+  <h1>วทัญญู สีธี</h1>
+  <p>หมูยออุบลของกูอยู่ไหน!?</p>
+  <p id="timer">หนีมาแล้ว: 0 วัน</p>
+  <button onclick="spam()">กดทวงอีกที</button>
+
+  <script>
+    let days = 0;
+    setInterval(() => {
+      days++;
+      document.getElementById("timer").textContent = `หนีมาแล้ว: ${days} วัน`;
+    }, 5000);
+
+    function spam() {
+      const popup = document.getElementById("popup");
+      popup.style.display = "block";
+      popup.textContent = "ส่งหมูยอมาเดี๋ยวนี้!! " + new Date().toLocaleTimeString();
+      setTimeout(() => popup.style.display = "none", 1500);
+      alert("กนกชญา วทัญญู ฮี้ฮี ส่งหมูยอมา!!");
+    }
+
+    // เปิดมาแล้วเด้งทันที
+    window.onload = () => {
+      setInterval(spam, 2000);
+    }
+  </script>
+</body>
+</html>
